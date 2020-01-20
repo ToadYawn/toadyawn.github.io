@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="null">
+    <meta name="keyword"  content="null">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        在Ubuntu上导入JavaWeb项目并配置 - ToadYawn的博客 | ToadYawn&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> 汤圆 </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Tingyu Hu</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#准备ubuntu基本环境"><span class="toc-text">准备ubuntu基本环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#准备项目包"><span class="toc-text">准备项目包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置eclipse环境"><span class="toc-text">配置eclipse环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置环境变量以及启动-mysql-redis"><span class="toc-text">配置环境变量以及启动 mysql/redis</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在-eclipse-中启动-tomcat-即可-或者直接-start-中就可以"><span class="toc-text">在 eclipse 中启动 tomcat 即可/或者直接 start 中就可以</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> 汤圆 </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        在Ubuntu上导入JavaWeb项目并配置
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2020-01-19 04:02:35</span></span>
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content no-indent">
+        <h2 id="准备ubuntu基本环境"><a href="#准备ubuntu基本环境" class="headerlink" title="准备ubuntu基本环境"></a>准备ubuntu基本环境</h2><ul>
+<li><p>安装 JDK 任意版本<br>一搬安装在 /opt/java/ 解压  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zvxf jdkxxxx /opt/java</span><br></pre></td></tr></table></figure>
+<p>配置环境变量 /etc/profile  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> JAVA_HOME=/opt/java/jdk1.8.0_181</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$&#123;JAVA_HOME&#125;</span>/bin:<span class="variable">$&#123;PATH&#125;</span></span><br></pre></td></tr></table></figure>
+<p>使之生效</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
+<p>检查之  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="variable">$JAVA_HOME</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装 eclipse 任意版本<br>一般安装在 /opt/eclipse/ 解压  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zvxf eclipse-jeexxxx /opt/eclipse</span><br></pre></td></tr></table></figure>
+<p>建立软连接，使 jre 成为其子目录  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir /opt/eclipse/jre</span><br><span class="line">ln -s /opt/jvm/jdk1.8.0_181/bin /opt/eclipse/jre/</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>  添加 eclipse 桌面图标</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit /usr/share/applications/eclipse.desktop</span><br><span class="line"><span class="comment">#打开文件后添加</span></span><br><span class="line">[Desktop Entry]</span><br><span class="line">Encoding=UTF-8</span><br><span class="line">Name=Eclipse</span><br><span class="line">Comment=Eclipse</span><br><span class="line">Exec=/opt/eclipse/eclipse  <span class="comment">#注意查看这两项实际地址与名称</span></span><br><span class="line">Icon=/opt/eclipse/icon.xpm  <span class="comment">#</span></span><br><span class="line">Terminal=<span class="literal">false</span></span><br><span class="line">StartupNotify=<span class="literal">true</span></span><br><span class="line">Type=Application</span><br><span class="line">Categories=Application;Development;</span><br><span class="line">//赋予权限</span><br><span class="line">sudo chmod u+x /usr/share/applications/eclipse.desktop</span><br></pre></td></tr></table></figure>
+<h2 id="准备项目包"><a href="#准备项目包" class="headerlink" title="准备项目包"></a>准备项目包</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#登录</span></span><br><span class="line">ftp:192.168.1.185/Install/web/kingkong_web_ubuntu1404.tgz</span><br><span class="line">username:tcauser</span><br><span class="line">userpwd:tcasoft.com</span><br><span class="line"><span class="comment">#解压到 /opt/</span></span><br><span class="line">tar zxvf kingkong_web_ubuntu1404.tgz /opt/</span><br><span class="line"><span class="comment">#最后得到 /opt/kingkong_web/ 目录</span></span><br></pre></td></tr></table></figure>
+<h2 id="配置eclipse环境"><a href="#配置eclipse环境" class="headerlink" title="配置eclipse环境"></a>配置eclipse环境</h2><ul>
+<li>设置好工作空间<br>一般也在 /opt/eclipse_workspace  </li>
+<li>指定项目内的 jre 为新项目的 build path<br>在 preference&gt;Java&gt;Installed JREs 中 add 路径为 /opt/kingkong_web/local/jdk1.7.xxxx</li>
+<li>导入项目包<br>import existing project into workspace<br>选择目录为 /opt/kingkong_web/ 后 finish 导入  </li>
+<li>设置项目内 tomcat 作为应用服务器<br>打开 server view(windows&gt;show views&gt;server)<br>新建 server, 选 tomcat 7.0 以及 /opt/kingkong_web/apache-tomcar-7.0.37, 将 KKWeb add 配置到上面 finish  </li>
+</ul>
+<h2 id="配置环境变量以及启动-mysql-redis"><a href="#配置环境变量以及启动-mysql-redis" class="headerlink" title="配置环境变量以及启动 mysql/redis"></a>配置环境变量以及启动 mysql/redis</h2><ul>
+<li><p>获取当前 user</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PROJ_USER=`whoami`</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取 shell 文件所在 bin 父文件夹的绝对路径（即项目文件夹）  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 获取当前执行 shell 文件所在路径及文件名</span></span><br><span class="line">BASH_SOURCE  </span><br><span class="line">BASH_SOURCE[0] <span class="comment"># 输出为 /opt/kingkong_web/bin/noash_control</span></span><br><span class="line"><span class="comment"># 去除文件名，仅保留与目录有关部分</span></span><br><span class="line">dirname</span><br><span class="line">dirname <span class="string">"<span class="variable">$BASH_SOURCE</span>[0]"</span> <span class="comment"># 输出为 /opt/kingkong_web/bin</span></span><br><span class="line"><span class="comment"># 获取绝对路径名称</span></span><br><span class="line"><span class="built_in">pwd</span></span><br><span class="line"><span class="comment"># 合</span></span><br><span class="line">PROJ_DIR=`<span class="built_in">cd</span> <span class="string">"<span class="variable">$(dirname $BASH_SOURCE[0])</span>/.."</span>; <span class="built_in">pwd</span>`</span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">PROJ_DIR=`<span class="built_in">cd</span> <span class="string">"`dirname <span class="variable">$BASH_SOURCE</span>[0]`/.."</span>; <span class="built_in">pwd</span>`</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改 PATH 可执行程序的查找路径  </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">单次修改，关闭终端即无效</span></span><br><span class="line">export PATH="/opt/kingkong_web/local/jdk1.7.0_80/bin:$PATH" # 冒号是分隔符，表示在原有基础上添加</span><br><span class="line"><span class="meta">#</span><span class="bash">稳定修改 ~/.bashrc 或者 ~/.bash_profile 或者系统级别的 /etc/profile 在其中添加</span></span><br><span class="line">vi ~/.bashrc</span><br><span class="line">source .bashrc</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 可执行文件添加 javahome/jrehome/classpath/javapath/pythonpath</span></span><br><span class="line"></span><br><span class="line">export JAVA_HOME="$PROJ_DIR/local/jdk1.7.0_80"</span><br><span class="line">export PATH="$JAVA_HOME/bin:$PATH"</span><br><span class="line">export JRE_HOME="$PROJ_DIR/local/jdk1.7.0_80/jre"</span><br><span class="line">export CLASSPATH=".:$JAVA_HOME/lib:$JRE_HOME/lib" # 当前目录；jdklib；jrelib</span><br><span class="line">export PYTHONPTH="$PROJ_DIR/local/lib/python2.7"</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改 LD_LIBRARY_PATH 动态库的查找路径  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 同样有命令单次和写文件两种</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 可执行文件添加 LD_LIBRARY/LIBRARY/C_INCLUDE/CPLUS_INCLUDE</span></span><br><span class="line"><span class="built_in">export</span> LD_LIBRARY_PATH=<span class="string">"<span class="variable">$PROJ_DIR</span>/local/lib:<span class="variable">$LD_LIBRARY_PATH</span>"</span></span><br><span class="line"><span class="built_in">export</span> LIBRARY_PATH=<span class="string">"<span class="variable">$PROJ_DIR</span>/local/lib:<span class="variable">$LIBRARY_PATH</span>"</span></span><br><span class="line"><span class="built_in">export</span> C_INCLUDE_PATH=<span class="string">"<span class="variable">$PROJ_DIR</span>/local/include:<span class="variable">$C_INCLUDE_PATH</span>"</span></span><br><span class="line"><span class="built_in">export</span> CPLUS_INCLUDE_PATH=<span class="string">"<span class="variable">$PROJ_DIR</span>/local/include:<span class="variable">$CPLUS_INCLUDE_PATH</span>"</span></span><br><span class="line">LOG_FILE=<span class="string">"<span class="variable">$PROJ_DIR</span>/log/apt.log"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>根据start/stop/status运行响应配置程序</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> <span class="string">"<span class="variable">$1</span>"</span> <span class="keyword">in</span> <span class="comment"># input argument[1]</span></span><br><span class="line">  start)</span><br><span class="line">      <span class="comment"># 一般会重定向 1&gt;/dev/null 2&gt;&amp;1</span></span><br><span class="line">      <span class="built_in">echo</span> <span class="string">"starting sandox-web cluster node ..."</span> &gt;&amp;2 <span class="comment"># &gt;&amp;2 重定向到标准错误</span></span><br><span class="line">      start</span><br><span class="line">      <span class="built_in">echo</span> <span class="string">"started"</span> &gt;&amp;2</span><br><span class="line">      RETVAL=$? <span class="comment"># 返回值为上一个函数</span></span><br><span class="line">  ;;</span><br><span class="line"></span><br><span class="line">  stop)</span><br><span class="line">      <span class="built_in">echo</span> <span class="string">"stop sandox-web cluster node .."</span> &gt;&amp;2</span><br><span class="line">      stop</span><br><span class="line">      <span class="built_in">echo</span> <span class="string">"stoped"</span> &gt;&amp;2</span><br><span class="line">      RETVAL=$?</span><br><span class="line">  ;;</span><br><span class="line"></span><br><span class="line">  status)</span><br><span class="line">      status</span><br><span class="line">      RETVAL=$?</span><br><span class="line">  ;;</span><br><span class="line"></span><br><span class="line">  *)</span><br><span class="line">      <span class="built_in">echo</span> <span class="string">"Usage: bin/noah_control start/stop/status"</span> &gt;&amp;2</span><br><span class="line">      <span class="built_in">exit</span> 1</span><br><span class="line">  ;;</span><br><span class="line"><span class="keyword">esac</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">start</span></span>() &#123;</span><br><span class="line">  <span class="built_in">echo</span> <span class="variable">$PROJ_DIR</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="variable">$PROJ_USER</span></span><br><span class="line">  <span class="comment">#config mysql</span></span><br><span class="line">  cp <span class="variable">$PROJ_DIR</span>/mysql/my.cnf.apt <span class="variable">$PROJ_DIR</span>/mysql/my.cnf</span><br><span class="line">  sed -i <span class="string">"s#apt_mysql_path#<span class="variable">$PROJ_DIR</span>#g"</span> <span class="variable">$PROJ_DIR</span>/mysql/my.cnf</span><br><span class="line">  <span class="comment">## 修改 opt/kingkong_web/mysql/my.cnf 中 apt_mysql_path 为 opt/kingkong_web</span></span><br><span class="line">  sed -i <span class="string">"s#apt_mysql_user#<span class="variable">$PROJ_USER</span>#g"</span> <span class="variable">$PROJ_DIR</span>/mysql/my.cnf</span><br><span class="line">  <span class="comment">## 修改 opt/kingkong_web/mysql/my.cnf 中 apt_mysql_user 为 kk</span></span><br><span class="line">  <span class="comment">#start mysql</span></span><br><span class="line">  <span class="built_in">cd</span> <span class="variable">$PROJ_DIR</span>/mysql</span><br><span class="line">  nohup ./scripts/mysql_install_db --user=<span class="variable">$PROJ_USER</span> &gt; <span class="variable">$LOG_FILE</span> &amp;</span><br><span class="line">  <span class="comment">## nohup 表示 no hang up, 不被挂断，关闭 shell 仍能运行；&amp; 表示后台运行，可以持续接受输入</span></span><br><span class="line">  <span class="comment">## 持续后台运行 mysql_install_db 参数为 --user=$PROJ_USER 输出重定向至 LOG 文件</span></span><br><span class="line">  nohup ./bin/mysqld_safe --defaults-file=<span class="variable">$PROJ_DIR</span>/mysql/my.cnf  &amp;</span><br><span class="line">  <span class="comment">#start redis</span></span><br><span class="line">  <span class="built_in">cd</span>  <span class="variable">$PROJ_DIR</span>/redis</span><br><span class="line">  nohup ./redis-server redis.conf</span><br><span class="line">  <span class="built_in">cd</span> <span class="variable">$PROJ_DIR</span></span><br><span class="line">  <span class="comment">#start tomcat</span></span><br><span class="line">  <span class="comment">#nohup $PROJ_DIR/apache-tomcat-7.0.37/bin/startup.sh &gt; $LOG_FILE &amp;</span></span><br><span class="line">  sleep 3</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># stop 和 status省略</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="在-eclipse-中启动-tomcat-即可-或者直接-start-中就可以"><a href="#在-eclipse-中启动-tomcat-即可-或者直接-start-中就可以" class="headerlink" title="在 eclipse 中启动 tomcat 即可/或者直接 start 中就可以"></a>在 eclipse 中启动 tomcat 即可/或者直接 start 中就可以</h2><p>登录 localhost:4000<br>用户名：root<br>密码：root007</p>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/ToadYawn">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://www.baidu.com">It helps SEO</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>
