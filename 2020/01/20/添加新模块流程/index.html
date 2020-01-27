@@ -11,7 +11,7 @@
 
     <title>
         
-        ToadYawn的博客 | ToadYawn&#39;s Blog
+        添加新模块流程 - ToadYawn的博客 | ToadYawn&#39;s Blog
         
     </title>
 
@@ -53,7 +53,7 @@
     </div>
     <div class="contents" id="nav-content">
         <ul>
-            <li  class=active >
+            <li >
                 <a href="/">
                     <i class="iconfont icon-shouye1"></i>
                     <span>主页</span>
@@ -88,6 +88,10 @@
         </ul>
     </div>
     
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#web-xml-filter-struts2-过滤器"><span class="toc-text">web.xml filter struts2 过滤器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#structs-sample-xml-调用-action"><span class="toc-text">structs-sample.xml 调用 action</span></a></li></ol>
+</div>
+    
 </div>
 
 
@@ -112,111 +116,43 @@
     <div class="index-middle">
         <!-- Main Content -->
         
-<div class="post-preview-container" style="min-height: 0px">
-    
-    <div class="post-preview">
-        <div class="post-time">2020-01-20</div>
-        <div class="post-info">
-            <a href="/2020/01/20/添加新模块流程/">
-                <h3>
-                    添加新模块流程
-                </h3>
-            </a>
-            <p>
-                
-            </p>
-        </div>
+
+
+<div class="post-container">
+    <div class="post-title">
+        添加新模块流程
     </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2020-01-20</div>
-        <div class="post-info">
-            <a href="/2020/01/20/java-web-xml/">
-                <h3>
-                    java_web:xml
-                </h3>
-            </a>
-            <p>
-                
-            </p>
-        </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2020-01-20 22:21:58</span></span>
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
     </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2020-01-19</div>
-        <div class="post-info">
-            <a href="/2020/01/19/在Ubuntu上导入JavaWeb项目并配置/">
-                <h3>
-                    在Ubuntu上导入JavaWeb项目并配置
-                </h3>
-            </a>
-            <p>
-                
-            </p>
+    <div class="post-content no-indent">
+        <h2 id="web-xml-filter-struts2-过滤器"><a href="#web-xml-filter-struts2-过滤器" class="headerlink" title="web.xml filter struts2 过滤器"></a>web.xml filter struts2 过滤器</h2><p>/WebContent/web.xml</p>
+<h2 id="structs-sample-xml-调用-action"><a href="#structs-sample-xml-调用-action" class="headerlink" title="structs-sample.xml 调用 action"></a>structs-sample.xml 调用 action</h2><p>/src/structs-sample.xml<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">action</span> <span class="attr">name</span>=<span class="string">"deleteSample"</span> <span class="attr">class</span>=<span class="string">"unit.tca.action.sample.DeleteSampleAction"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">result</span> <span class="attr">name</span>=<span class="string">"success"</span> <span class="attr">type</span>=<span class="string">"json"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">params</span> <span class="attr">name</span>=<span class="string">"root"</span>&gt;</span>success<span class="tag">&lt;/<span class="name">params</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">result</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">action</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>##<br>/src/unit.tca.action.sample/DeleteLoadSampleAction.java<br><code>`</code>java<br>package unit.tca.sample;</p>
+<p>import java.io.Serialiable;</p>
+<p>public class DeleteLoadSampleAction extends BaseAction{<br>    private int id;<br>    private boolean success;<br>    public String execute(){<br>        Session session = HibernateSessionFactory.getSession();<br>        Transaction transaction = session.begingTransaction();<br>        try{<br>            try{<br>                Sample sample=(Sample)session.get(Sample.class,Interger,valueOf(this.id));<br>                session.delete((Object)sample);<br>                transaction.commit();<br>                this.success=true;<br>            } catch (Exception e){<br>                transaction.rollback();<br>                e.printDtackTrace();<br>                this.success=false;<br>                HibernateSessionFactory.closeSession();<br>            }<br>        } finally {<br>            HibernateSessionFactory.closeSession();<br>        }<br>        return “success”;//接受字符串给jsp页面<br>    }</p>
+<pre><code>public int getId(){
+    return id;
+}
+</code></pre><p>}</p>
+
+        
+        <br />
+        <div id="comment-container">
         </div>
-    </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2020-01-18</div>
-        <div class="post-info">
-            <a href="/2020/01/18/Build-and-Maintain-Hexo/">
-                <h3>
-                    Build and Maintain Hexo
-                </h3>
-            </a>
-            <p>
-                
-            </p>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
         </div>
+
     </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2020-01-18</div>
-        <div class="post-info">
-            <a href="/2020/01/18/hello-world/">
-                <h3>
-                    Hello World
-                </h3>
-            </a>
-            <p>
-                
-            </p>
-        </div>
-    </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2020-01-14</div>
-        <div class="post-info">
-            <a href="/2020/01/14/javalearning/">
-                <h3>
-                    Tomcat install &amp; deploy web application
-                </h3>
-            </a>
-            <p>
-                
-            </p>
-        </div>
-    </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2020-01-12</div>
-        <div class="post-info">
-            <a href="/2020/01/12/history001/">
-                <h3>
-                    DigestWorldHistory001
-                </h3>
-            </a>
-            <p>
-                
-            </p>
-        </div>
-    </div>
-    
 </div>
-<ul class="pager">
-    
-    
-</ul>
 
     </div>
 </div>
@@ -280,7 +216,7 @@
     // We expose some of the variables needed by the front end
     window.hexo_search_path = "search.json"
     window.hexo_root = "/"
-    window.isPost = false
+    window.isPost = true
 </script>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>

@@ -11,7 +11,7 @@
 
     <title>
         
-        Tomcat install &amp; deploy web application - ToadYawn的博客 | ToadYawn&#39;s Blog
+        java_web:xml - ToadYawn的博客 | ToadYawn&#39;s Blog
         
     </title>
 
@@ -89,7 +89,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#directory-of-installed-Tomcat"><span class="toc-text">directory of installed Tomcat</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#idea-integrate-tomcat"><span class="toc-text">idea integrate tomcat</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#xml-语法"><span class="toc-text">xml 语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#xml-解析方式"><span class="toc-text">xml 解析方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用-jaxp-api"><span class="toc-text">使用 jaxp api</span></a></li></ol>
 </div>
     
 </div>
@@ -120,11 +120,11 @@
 
 <div class="post-container">
     <div class="post-title">
-        Tomcat install &amp; deploy web application
+        java_web:xml
     </div>
 
     <div class="post-meta">
-        <span class="attr">发布于：<span>2020-01-14 08:55:00</span></span>
+        <span class="attr">发布于：<span>2020-01-20 17:26:54</span></span>
         
         </span>
         <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
@@ -132,16 +132,57 @@
 </span>
     </div>
     <div class="post-content no-indent">
-        <h2 id="directory-of-installed-Tomcat"><a href="#directory-of-installed-Tomcat" class="headerlink" title="directory of installed Tomcat"></a>directory of installed Tomcat</h2><ul>
-<li><kbd>bin</kbd> store script file for startup or shutdown in different operation system  </li>
-<li><kbd>conf</kbd> configuration of tomcat including server.xml</li>
-<li><kbd>lib</kbd> jar package needed by tomcat  </li>
-<li><kbd>logs</kbd> log  </li>
-<li><kbd>temp</kbd> Directory used by the JVM for temporary files (java.io.tmpdir)</li>
-<li><kbd>webapps</kbd> java application accessible by client  </li>
-<li><kbd>work</kbd> servlet files trasnformed from jsp </li>
-</ul>
-<h2 id="idea-integrate-tomcat"><a href="#idea-integrate-tomcat" class="headerlink" title="idea integrate tomcat"></a>idea integrate tomcat</h2><p>create new web application project<br>add configuration<br>server&gt;local&gt;tomcat directory</p>
+        <h2 id="xml-语法"><a href="#xml-语法" class="headerlink" title="xml 语法"></a>xml 语法</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span><span class="meta">?&gt;</span></span></span><br><span class="line"><span class="tag">&lt;&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="xml-解析方式"><a href="#xml-解析方式" class="headerlink" title="xml 解析方式"></a>xml 解析方式</h2><ol>
+<li>dom 解析</li>
+<li>sax 解析</li>
+</ol>
+<p>对应常用解析器有: jaxp, dom4j(实际使用最多), jdom</p>
+<h2 id="使用-jaxp-api"><a href="#使用-jaxp-api" class="headerlink" title="使用 jaxp api"></a>使用 jaxp api</h2><p>jaxp 是 javase 的一部分 import javax.xml.parsers<br>DocumentBuilder<br>    new: DocumnentBuilderFactory.newDocumentBuilder()<br>    parse: Document parse(String url) Document 是 org.w3c.dom下的接口<br>    取标签: Nodelist getElementByTag(String tagName) 遍历: i&lt;list.getLength() list.iten(i)<br>    创建标签: createElement(String tagName)<br>    创建文本: creatTextNode(String data)<br>    文本添加到节点: appendChild(Node newChild) 或者删除 removeChild<br>    父节点: getParentNode()<br>DoucumentBuilderFactory<br>    new: newInstance()</p>
+<p>实现需求：查找name, 添加 node/删除/修改/遍历输出node名 </p>
+<ol>
+<li><p>创建解析器工厂</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DocumentBuildFactory builderFactory = DocumentBilderFactory.newInstance();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过工厂创建解析器</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DocumentBuilder builder = builderFactory.newDocumentBuilder();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>解析 xml 返回 document, 一定要回写，不然还在内存</p>
+<pre><code class="java">Docunment doc = builder.parse(<span class="string">"src/person.xml"</span>);
+NodeList list = doc.getElementByTagName(<span class="string">"name"</span>);
+<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;list.getLength();i++){
+    Node name = list.iten(i);
+    String s = name.getTextContent();<span class="comment">//得到节点文本值 如果要修改，则是 setTextContent</span>
+    System.out.println(s);
+}
+<span class="comment">//添加</span>
+{
+Element sex1 =document.createElement(<span class="string">"sex"</span>);
+Text text = document.createTextNode(<span class="string">"nv"</span>);
+sex1.appendChild(text);
+p1.appendChild(sex1);
+}
+<span class="comment">//递归遍历每一个节点</span>
+{
+    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">list1</span><span class="params">(Node node)</span></span>{
+        <span class="keyword">if</span>(node.getNodeType() == Node.ELEMENT_NODE){<span class="comment">//避免空格换行都打印出来</span>
+            Systom.out.println(node.getNodeName());
+        }
+        NodeList list = node.getChildNodes();
+        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;node.getLength();i++){
+            Node node1 = node.items(i);
+            list1(node1);
+        }
+
+    }
+ }
+<span class="comment">//回写 xml</span>
+TransformerFactory tf = TransformerFactory.newInstance();
+Transformer t = tf.newTransformer();
+t.transform(<span class="keyword">new</span> DOMSource(document),<span class="keyword">new</span> StreamResult(<span class="string">"src/person.xml"</span>))<span class="comment">//transform(Source Node整个document父节点DocumentSource, Result StreamResult)</span>
+</code></pre>
+</li>
+</ol>
 
         
         <br />
