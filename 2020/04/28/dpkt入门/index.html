@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="null">
+    <meta name="keyword"  content="null">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        dpkt入门 - ToadYawn的博客 | ToadYawn&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> 汤圆 </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Tingyu Hu</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#模块及接口"><span class="toc-text">模块及接口</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#dpkt-Packet"><span class="toc-text">dpkt.Packet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pcap"><span class="toc-text">pcap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ip"><span class="toc-text">ip</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tcp"><span class="toc-text">tcp</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> 汤圆 </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        dpkt入门
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2020-04-28 09:12:10</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#python, dpkt, pcap" title="python, dpkt, pcap">python, dpkt, pcap</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content no-indent">
+        <h2 id="模块及接口"><a href="#模块及接口" class="headerlink" title="模块及接口"></a>模块及接口</h2><h3 id="dpkt-Packet"><a href="#dpkt-Packet" class="headerlink" title="dpkt.Packet"></a>dpkt.Packet</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">attr:</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span> __hdr__ = ( (<span class="string">'字段'</span>,<span class="string">'占位'</span>,值) )</span><br><span class="line">    <span class="comment"># 占位: H/I/B short/int/ 16b/32b/4b</span></span><br><span class="line">    <span class="comment"># (name, structfmt, default) tuples</span></span><br><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">Foo</span><span class="params">(Packet)</span>:</span></span><br><span class="line">            __hdr__ = ((<span class="string">'foo'</span>, <span class="string">'I'</span>, <span class="number">1</span>), (<span class="string">'bar'</span>, <span class="string">'H'</span>, <span class="number">2</span>), (<span class="string">'baz'</span>, <span class="string">'4s'</span>, <span class="string">'quux'</span>))</span><br><span class="line">        &gt;&gt;&gt; foo = Foo(bar=<span class="number">3</span>)</span><br><span class="line">        &gt;&gt;&gt; foo</span><br><span class="line">        Foo(bar=<span class="number">3</span>)</span><br><span class="line">        &gt;&gt;&gt; str(foo)</span><br><span class="line">        <span class="string">'\x00\x00\x00\x01\x00\x03quux'</span></span><br><span class="line">        &gt;&gt;&gt; foo.bar</span><br><span class="line">        <span class="number">3</span></span><br><span class="line">        &gt;&gt;&gt; foo.baz</span><br><span class="line">        <span class="string">'quux'</span></span><br><span class="line">        &gt;&gt;&gt; foo.foo = <span class="number">7</span></span><br><span class="line">        &gt;&gt;&gt; foo.baz = <span class="string">'whee'</span></span><br><span class="line">        &gt;&gt;&gt; foo</span><br><span class="line">        Foo(baz=<span class="string">'whee'</span>, foo=<span class="number">7</span>, bar=<span class="number">3</span>)</span><br><span class="line">        &gt;&gt;&gt; Foo(<span class="string">'hello, world!'</span>)</span><br><span class="line">        Foo(baz=<span class="string">' wor'</span>, foo=<span class="number">1751477356L</span>, bar=<span class="number">28460</span>, data=<span class="string">'ld!'</span>)</span><br><span class="line"><span class="number">2.</span> __byte_order__ 默认<span class="string">'&gt;'</span></span><br><span class="line"></span><br><span class="line">method:</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span> __init__ (buf,keyword[field=val,...])</span><br><span class="line">    <span class="comment"># 可以传入待解包的报文，一旦传入，则程序会自动调用unpack()函数进行解包 struct.unpack(self.__hdr_fmt__, buf[:self.__hdr_len__]))    self.data = buf[self.__hdr_len__:] </span></span><br><span class="line">    <span class="comment"># keyword：设置__hdr__的相关域的值</span></span><br><span class="line"></span><br><span class="line">    &gt;&gt;&gt; struct.unpack(<span class="string">'&gt;IH'</span>, <span class="string">b'\xf0\xf0\xf0\xf0\x80\x80'</span>)</span><br><span class="line">    (<span class="number">4042322160</span>, <span class="number">32896</span>)</span><br><span class="line">    &gt;&gt;&gt; struct.pack(<span class="string">"ihb"</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line">    <span class="string">'\x01\x00\x00\x00\x02\x00\x03'</span></span><br><span class="line">    <span class="number">3</span>、继承了__str__()函数，使得调用str()时，会进行如下操作：</span><br><span class="line">    <span class="keyword">return</span> self.pack_hdr() + str(self.data)</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span> int __len__  len(packet)</span><br><span class="line"></span><br><span class="line"><span class="number">3.</span> self __iter__ 可迭代</span><br><span class="line"></span><br><span class="line"><span class="number">4.</span> __getitem__ 按下标取 https://www.jianshu.com/p/d5783fb60d29</span><br><span class="line"></span><br><span class="line"><span class="number">5.</span> string __repr__  s = packet</span><br><span class="line"></span><br><span class="line"><span class="number">6.</span> __str__ str(self.__bytes__())</span><br><span class="line"></span><br><span class="line"><span class="number">7.</span> __bytes__ self.pack_hdr() + bytes(self.data)</span><br><span class="line"></span><br><span class="line"><span class="number">8.</span> 报文头字符串 bytes pack_hdr(self)</span><br><span class="line"></span><br><span class="line">调用_pack_hdr = partial(struct.pack, self.__hdr_fmt__),</span><br><span class="line">参数为报文头关键字self._pack_hdr(*[getattr(self, k) <span class="keyword">for</span> k <span class="keyword">in</span> self.__hdr_fields__]) </span><br><span class="line"><span class="comment"># functools.partial 偏函数，添加函数默认参数值partial(原函数,参数)</span></span><br><span class="line"></span><br><span class="line"><span class="number">9.</span> 全包转化为字节 bytes pack(self) = bytes(self)</span><br><span class="line"></span><br><span class="line"><span class="number">10.</span> 从字节流转化为Packet类 Packet unpack(self,buf) dpkt.Packet.unpack(self,buf)</span><br><span class="line"></span><br><span class="line"><span class="number">11.</span> 从字节流转化为<span class="number">16</span>进制字符串 string hexdump(buf, length=<span class="number">16</span>)</span><br><span class="line"></span><br><span class="line"><span class="number">12.</span> 计算buf的检验和 int in_cksum(buf)</span><br></pre></td></tr></table></figure>
+<h3 id="pcap"><a href="#pcap" class="headerlink" title="pcap"></a>pcap</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 文件头与包头类</span></span><br><span class="line"><span class="comment"># pcap文件头类 bytes:大端二进制流/pcap文件</span></span><br><span class="line">fh FileHdr(bytes) <span class="comment"># 转化bytes为filehdr类</span></span><br><span class="line">    <span class="comment"># 成员 见pcap文件定义 </span></span><br><span class="line">    __hdr__:</span><br><span class="line">        fh.magic</span><br><span class="line">        fh.v_major</span><br><span class="line">        fh.v_minor</span><br><span class="line">        fh.thiszone</span><br><span class="line">        fh.sigfigs</span><br><span class="line">        fh.snaplen</span><br><span class="line">        fh.linktype</span><br><span class="line">LEFileHdr</span><br><span class="line">    同FileHdr</span><br><span class="line">    __byte_order__</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>be = <span class="string">b'\xa1\xb2\xc3\xd4\x00\x02\x00\x04\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x60\x00\x00\x00\x01'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>le = <span class="string">b'\xd4\xc3\xb2\xa1\x02\x00\x04\x00\x00\x00\x00\x00\x00\x00\x00\x00\x60\x00\x00\x00\x01\x00\x00\x00'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>befh = FileHdr(be)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>lefh = LEFileHdr(le)</span><br><span class="line"><span class="keyword">assert</span> (befh.linktype == lefh.linktype)</span><br><span class="line"></span><br><span class="line"><span class="comment"># packet头类</span></span><br><span class="line">PktHdr </span><br><span class="line">    __hdr__:</span><br><span class="line">        tv_sec</span><br><span class="line">        tv_usec</span><br><span class="line">        caplen</span><br><span class="line">        len</span><br><span class="line">LEPktHdr</span><br><span class="line">    同PktHdr</span><br><span class="line">    __byte_order__</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>data = (  <span class="comment"># full libpcap file with one packet</span></span><br><span class="line">        <span class="string">b'\xd4\xc3\xb2\xa1\x02\x00\x04\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\x00\x00\x01\x00\x00\x00'</span></span><br><span class="line">        <span class="string">b'\xb2\x67\x4a\x42\xae\x91\x07\x00\x46\x00\x00\x00\x46\x00\x00\x00\x00\xc0\x9f\x32\x41\x8c\x00\xe0'</span></span><br><span class="line">        <span class="string">b'\x18\xb1\x0c\xad\x08\x00\x45\x00\x00\x38\x00\x00\x40\x00\x40\x11\x65\x47\xc0\xa8\xaa\x08\xc0\xa8'</span></span><br><span class="line">        <span class="string">b'\xaa\x14\x80\x1b\x00\x35\x00\x24\x85\xed'</span></span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>fobj = BytesIO(data)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>reader = dpkt.pcap.Reader(fobj)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">assert</span> reader.name == <span class="string">'&lt;BytesIO&gt;'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>buf1 = next(iter(reader))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">assert</span> buf1 == data[FileHdr.__hdr_len__ + PktHdr.__hdr_len__:]<span class="comment"># 这两个长度是固定的</span></span><br><span class="line">fobj.seek(<span class="number">0</span>) file指针偏移</span><br><span class="line">reader = Reader(fobj)</span><br><span class="line"><span class="keyword">assert</span> reader.dispatch(<span class="number">0</span>, <span class="keyword">lambda</span> ts, pkt: <span class="keyword">None</span>) == <span class="number">1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">__le = sys.byteorder == <span class="string">'little'</span></span><br><span class="line"><span class="comment"># Writer 和 Reader</span></span><br><span class="line">Writer(fileobj,snaplen=<span class="number">1500</span>,linktype=DLT_EN10MB, nano=<span class="keyword">False</span>)</span><br><span class="line">    __f</span><br><span class="line">    _precision</span><br><span class="line">    根据__le使用LEFileHdr/FileHdr生成fh,_PktHdr</span><br><span class="line">    由_PktHdr生成bytes类 _pack_hdr</span><br><span class="line"></span><br><span class="line">    writepkt(pkt,ts=<span class="keyword">None</span>) 调用writepkt_time pkt (bytes) ts (float)</span><br><span class="line">    &gt;&gt;&gt; ts, pkt = <span class="number">1454725786.526401</span>, <span class="string">b'foooo'</span></span><br><span class="line">    &gt;&gt;&gt; writer.writepk(pkt, ts)</span><br><span class="line">    writepkt_time(pkt,ts) 生成头，并和pkt一起写入self.__f</span><br><span class="line">    writepkts(pkts) pkts: iterable containing (ts, pkt)</span><br><span class="line">    &gt;&gt;&gt; pkts = [</span><br><span class="line">        (<span class="number">1454725786.526401</span>, <span class="string">b"fooo"</span>),</span><br><span class="line">        (<span class="number">1454725787.526401</span>, <span class="string">b"barr"</span>),</span><br><span class="line">        (<span class="number">3243204320.093211</span>, <span class="string">b"grill"</span>),</span><br><span class="line">        (<span class="number">1454725789.526401</span>, <span class="string">b"lol"</span>),</span><br><span class="line">    ]</span><br><span class="line">    &gt;&gt;&gt; writer.writepkts(pkts)</span><br><span class="line"></span><br><span class="line">Reader(fileobj)</span><br><span class="line">    name</span><br><span class="line">    __f</span><br><span class="line">    buf = self.__f.read(FileHdr.__hdr_len__)</span><br><span class="line">    self.__fh = FileHdr(buf) <span class="comment">#__attr 是特殊属性 私有且不能访问</span></span><br><span class="line">    self.__ph = PktHdr</span><br><span class="line">    self._divisor = <span class="number">1E6</span> <span class="keyword">if</span> self.__fh.magic <span class="keyword">in</span> (TCPDUMP_MAGIC, PMUDPCT_MAGIC) <span class="keyword">else</span> Decimal(<span class="string">'1E9'</span>)</span><br><span class="line">    self.snaplen = self.__fh.snaplen</span><br><span class="line">    self.filter = <span class="string">''</span></span><br><span class="line">    self.__iter = iter(self)</span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    fd(self) <span class="keyword">return</span> self.__f.fileno()</span><br><span class="line">    fileno(self) <span class="keyword">return</span> self.fd</span><br><span class="line">    datalink(self) <span class="keyword">return</span> self.__fh.linktype</span><br><span class="line">    readpkts(self) <span class="keyword">return</span> list(self)</span><br><span class="line">    __next__(self) <span class="keyword">return</span> next(self.__iter)</span><br><span class="line">    dispatch(self, cnt, callback, *args) cnt处理packet数 已处理数</span><br><span class="line">    <span class="comment"># Reader返回的是packet元组(ts,buf)</span></span><br></pre></td></tr></table></figure>
+<h3 id="ip"><a href="#ip" class="headerlink" title="ip"></a>ip</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">IP(dpkt.Packet)</span><br><span class="line">    __hdr__</span><br><span class="line">        _v_hl B </span><br><span class="line">        tos B </span><br><span class="line">        len H</span><br><span class="line">        id H</span><br><span class="line">        off H</span><br><span class="line">        ttl B</span><br><span class="line">        p B</span><br><span class="line">        sum H</span><br><span class="line">        src <span class="number">4</span>s</span><br><span class="line">        dst <span class="number">4</span>s</span><br><span class="line">    _protosw 字典</span><br><span class="line">    opts</span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    v(self) <span class="keyword">return</span> self._v_hl &gt;&gt; <span class="number">4</span></span><br><span class="line"><span class="meta">    @v.setter</span></span><br><span class="line">    v(self, v) self._v_hl = (v &lt;&lt; <span class="number">4</span>) | (self._v_hl &amp; <span class="number">0xf</span>)</span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    hl(self) <span class="keyword">return</span> self._v_hl &amp; <span class="number">0xf</span></span><br><span class="line"><span class="meta">    @hl.setter</span></span><br><span class="line">    hl(self, hl) self._v_hl = (self._v_hl &amp; <span class="number">0xf0</span>) | hl</span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    rf(self) <span class="keyword">return</span> (self.off &gt;&gt; <span class="number">15</span>) &amp; <span class="number">0x1</span> DF010</span><br><span class="line"><span class="meta">    @rf.setter</span></span><br><span class="line">    rf(self, rf) self.off = (self.off &amp; ~IP_RF) | (rf &lt;&lt; <span class="number">15</span>) <span class="comment">#~x = -x-1</span></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    df(self) <span class="keyword">return</span> (self.off &gt;&gt; <span class="number">14</span>) &amp; <span class="number">0x1</span></span><br><span class="line"><span class="meta">    @df.setter</span></span><br><span class="line">    df(self, df) self.off = (self.off &amp; ~IP_DF) | (df &lt;&lt; <span class="number">14</span>)</span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    mf(self) <span class="keyword">return</span> (self.off &gt;&gt; <span class="number">13</span>) &amp; <span class="number">0x1</span></span><br><span class="line"><span class="meta">    @mf.setter</span></span><br><span class="line">    mf(self, mf) self.off = (self.off &amp; ~IP_MF) | (mf &lt;&lt; <span class="number">13</span>)</span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    offset(self) <span class="keyword">return</span> (self.off &amp; IP_OFFMASK) &lt;&lt; <span class="number">3</span> <span class="comment"># 单位是bit 正好偏移3位</span></span><br><span class="line"><span class="meta">    @offset.setter</span></span><br><span class="line">    offset(self, offset) self.off = (self.off &amp; ~IP_OFFMASK) | (offset &gt;&gt; <span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">    __len__ <span class="keyword">return</span> self.__hdr_len__ + len(self.opts) + len(self.data)</span><br><span class="line">    __bytes__ <span class="keyword">return</span> self.pack_hdr() + bytes(self.opts) + bytes(self.data)</span><br><span class="line"></span><br><span class="line">    unpack(self,buf) dpkt.Packet.unpack(self, buf) self.opts self.data</span><br><span class="line"></span><br><span class="line"><span class="meta">    @classmethod set_proto(cls, p, pktclass) cls._protosw[p] = pktclass 类的属性方法</span></span><br><span class="line"><span class="meta">    @classmethod get_proto(cls, p) return cls._protosw[p]</span></span><br><span class="line"></span><br><span class="line">    &gt;&gt;&gt; s = <span class="string">b'E\x00\x00"\x00\x00\x00\x00@\x11r\xc0\x01\x02\x03\x04\x01\x02\x03\x04\x00o\x00\xde\x00\x0e\xbf5foobar'</span></span><br><span class="line"></span><br><span class="line">    用字段来初始化</span><br><span class="line">    &gt;&gt;&gt; ip = IP(id=<span class="number">0</span>, src=<span class="string">b'\x01\x02\x03\x04'</span>, dst=<span class="string">b'\x01\x02\x03\x04'</span>, p=<span class="number">17</span>)</span><br><span class="line">    &gt;&gt;&gt; u = udp.UDP(sport=<span class="number">111</span>, dport=<span class="number">222</span>)</span><br><span class="line">    &gt;&gt;&gt; u.data = <span class="string">b'foobar'</span></span><br><span class="line">    &gt;&gt;&gt; u.ulen += len(u.data)</span><br><span class="line">    &gt;&gt;&gt; ip.data = u</span><br><span class="line">    &gt;&gt;&gt; ip.len += len(u)</span><br><span class="line">    &gt;&gt;&gt; <span class="keyword">assert</span> (bytes(ip) == s)</span><br><span class="line">    &gt;&gt;&gt; <span class="keyword">assert</span> (ip.v == <span class="number">4</span>)</span><br><span class="line">    &gt;&gt;&gt; <span class="keyword">assert</span> (ip.hl == <span class="number">5</span>)</span><br><span class="line">    直接用bytes来初始化</span><br><span class="line">    &gt;&gt;&gt; ip = IP(s)</span><br><span class="line">    &gt;&gt;&gt; <span class="keyword">assert</span> (bytes(ip) == s)</span><br><span class="line">    &gt;&gt;&gt; <span class="keyword">assert</span> (ip.udp.data == <span class="string">b'foobar'</span>)</span><br><span class="line">    生成对应dict</span><br><span class="line">    &gt;&gt;&gt; d = dict(ip)</span><br><span class="line">    &gt;&gt;&gt; <span class="keyword">assert</span> (d[<span class="string">'src'</span>] == <span class="string">b'\x01\x02\x03\x04'</span>)</span><br><span class="line">    &gt;&gt;&gt; <span class="keyword">assert</span> (d[<span class="string">'dst'</span>] == <span class="string">b'\x01\x02\x03\x04'</span>)</span><br><span class="line">    &gt;&gt;&gt; <span class="keyword">assert</span> (d[<span class="string">'id'</span>] == <span class="number">0</span>)</span><br><span class="line">    &gt;&gt;&gt; <span class="keyword">assert</span> (d[<span class="string">'p'</span>] == <span class="number">17</span>)</span><br><span class="line">    检查bytes是否语法错误(通常是E/<span class="number">45</span>)</span><br><span class="line">    &gt;&gt;&gt; s = <span class="string">b'BB\x03\x00\x00\x00\x00\x00\x00\x00\xd0\x00\xec\xbc\xa5\x00\x00\x00\x03\x80\x00\x00\xd0\x01\xf2\xac\xa5"0\x01\x00\x14\x00\x02\x00\x0f\x00\x00\x00\x00\x00\x00\x00\x00\x00'</span></span><br><span class="line">    &gt;&gt;&gt; <span class="keyword">try</span>:</span><br><span class="line">    &gt;&gt;&gt;     IP(s)</span><br><span class="line">    &gt;&gt;&gt; <span class="keyword">except</span> dpkt.UnpackError:</span><br><span class="line">    &gt;&gt;&gt;     <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    &gt;&gt;&gt; d = <span class="string">b'X'</span> * <span class="number">2048</span></span><br><span class="line">    &gt;&gt;&gt; s = <span class="string">b'E\x00\x00\x004\xce@\x00\x80\x06\x00\x00\x7f\x00\x00\x01\x7f\x00\x00\x01\xccN\x0c8`\xff\xc6N_\x8a\x12\x98P\x18@):\xa3\x00\x00'</span> + d</span><br><span class="line">    &gt;&gt;&gt; ip = IP(s)</span><br><span class="line">    &gt;&gt;&gt; <span class="keyword">assert</span> (isinstance(ip.data, tcp.TCP))</span><br><span class="line">    &gt;&gt;&gt; <span class="keyword">assert</span> (ip.tcp.data == d)</span><br><span class="line"></span><br><span class="line">    总长度指定无效</span><br><span class="line">    &gt;&gt;&gt; ip1 = IP(data = <span class="string">b"Hello world!"</span>)</span><br><span class="line">    &gt;&gt;&gt; ip2 = IP(data = <span class="string">b"Hello world!"</span>, len = <span class="number">0</span>)</span><br><span class="line">    &gt;&gt;&gt; ip3 = IP(bytes(ip1))</span><br><span class="line">    &gt;&gt;&gt; ip4 = IP(bytes(ip2))</span><br><span class="line">    &gt;&gt;&gt; <span class="keyword">assert</span> (bytes(ip1) == bytes(ip3))</span><br><span class="line">    &gt;&gt;&gt; <span class="keyword">assert</span> (bytes(ip1) == <span class="string">b'E\x00\x00 \x00\x00\x00\x00@\x00z\xdf\x00\x00\x00\x00\x00\x00\x00\x00Hello world!'</span>)</span><br><span class="line">    &gt;&gt;&gt; <span class="keyword">assert</span> (bytes(ip2) == bytes(ip4))</span><br><span class="line">    &gt;&gt;&gt; <span class="keyword">assert</span> (bytes(ip2) == <span class="string">b'E\x00\x00 \x00\x00\x00\x00@\x00z\xdf\x00\x00\x00\x00\x00\x00\x00\x00Hello world!'</span>)</span><br><span class="line"></span><br><span class="line">    .ip .tcp可生成对应上层对象</span><br><span class="line">    &gt;&gt;&gt; <span class="keyword">from</span> . <span class="keyword">import</span> ethernet</span><br><span class="line">    &gt;&gt;&gt; s = <span class="string">b"\x00\x23\x20\xd4\x2a\x8c\x00\x23\x20\xd4\x2a\x8c\x08\x00\x45\x00\x00\x54\x00\x00\x40\x00\x40\x01\x25\x8d\x0a\x00\x00\x8f\x0a\x00\x00\x8e\x08\x00\x2e\xa0\x01\xff\x23\x73\x20\x48\x4a\x4d\x00\x00\x00\x00\x78\x85\x02\x00\x00\x00\x00\x00\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f\x20\x21\x22\x23\x24\x25\x26\x27\x28\x29\x2a\x2b\x2c\x2d\x2e\x2f\x30\x31\x32\x33\x34\x35\x36\x37"</span></span><br><span class="line">    &gt;&gt;&gt; ip = ethernet.Ethernet(s).ip</span><br><span class="line">    &gt;&gt;&gt; <span class="keyword">assert</span> (ip.rf == <span class="number">0</span>)</span><br><span class="line">    &gt;&gt;&gt; <span class="keyword">assert</span> (ip.df == <span class="number">1</span>)</span><br><span class="line">    &gt;&gt;&gt; <span class="keyword">assert</span> (ip.mf == <span class="number">0</span>)</span><br><span class="line">    &gt;&gt;&gt; <span class="keyword">assert</span> (ip.offset == <span class="number">0</span>)</span><br><span class="line">    修改分片及偏移</span><br><span class="line">    &gt;&gt;&gt; ip.rf = <span class="number">1</span></span><br><span class="line">    &gt;&gt;&gt; ip.df = <span class="number">0</span></span><br><span class="line">    &gt;&gt;&gt; ip.mf = <span class="number">1</span></span><br><span class="line">    &gt;&gt;&gt; ip.offset = <span class="number">1480</span></span><br><span class="line">    &gt;&gt;&gt; <span class="keyword">assert</span> (ip.rf == <span class="number">1</span>)</span><br><span class="line">    &gt;&gt;&gt; <span class="keyword">assert</span> (ip.df == <span class="number">0</span>)</span><br><span class="line">    &gt;&gt;&gt; <span class="keyword">assert</span> (ip.mf == <span class="number">1</span>)</span><br><span class="line">    &gt;&gt;&gt; <span class="keyword">assert</span> (ip.offset == <span class="number">1480</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="tcp"><a href="#tcp" class="headerlink" title="tcp"></a>tcp</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">TCP(dpkt.Packet)</span><br><span class="line">    __hdr__</span><br><span class="line">        sport</span><br><span class="line">        dport</span><br><span class="line">        seq</span><br><span class="line">        ack</span><br><span class="line">        _off <span class="comment"># 访问时 self._off为80 self.off为5</span></span><br><span class="line">        flags</span><br><span class="line">        win</span><br><span class="line">        sum</span><br><span class="line">        urp</span><br><span class="line">    opts</span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    off(self): <span class="keyword">return</span> self._off &gt;&gt; <span class="number">4</span> <span class="comment"># 单位是 4B  0:15 * 4 B 正好保留字段也是4位(在_off字段)+2位(在flags字段)</span></span><br><span class="line"><span class="meta">    @off.setter</span></span><br><span class="line">    off(self, off) self._off = (off &lt;&lt; <span class="number">4</span>) | (self._off &amp; <span class="number">0xf</span>)</span><br><span class="line"></span><br><span class="line">    __len__(self) self.__hdr_len__ + len(self.opts) + len(self.data)</span><br><span class="line"></span><br><span class="line">    __bytes__(self) <span class="keyword">return</span> self.pack_hdr() + bytes(self.opts) + bytes(self.data)</span><br><span class="line"></span><br><span class="line">    unpack(self, buf) dpkt.Packet.unpack(self, buf)</span><br><span class="line">        ol = ((self._off &gt;&gt; <span class="number">4</span>) &lt;&lt; <span class="number">2</span>) - self.__hdr_len__ <span class="comment"># optional length</span></span><br><span class="line">        <span class="keyword">if</span> ol &lt; <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">raise</span> dpkt.UnpackError(<span class="string">'invalid header length'</span>)</span><br><span class="line">        self.opts = buf[self.__hdr_len__:self.__hdr_len__ + ol]</span><br><span class="line">        self.data = buf[self.__hdr_len__ + ol:]</span><br><span class="line">    </span><br><span class="line">    opts[(option,data),...] parse_opts(buf) <span class="comment"># 将tcp可选字段buffer转化为(option,data)元组</span></span><br><span class="line"></span><br><span class="line">    &gt;&gt;&gt; buf = <span class="string">b'\x02\x04\x23\x00\x01\x01\x04\x02'</span></span><br><span class="line">    &gt;&gt;&gt; opts = parse_opts(buf)</span><br><span class="line">    &gt;&gt;&gt; <span class="keyword">assert</span> opts == [</span><br><span class="line">        (TCP_OPT_MSS, <span class="string">b'\x23\x00'</span>),</span><br><span class="line">        (TCP_OPT_NOP, <span class="string">b''</span>),</span><br><span class="line">        (TCP_OPT_NOP, <span class="string">b''</span>),</span><br><span class="line">        (TCP_OPT_SACKOK, <span class="string">b''</span>)</span><br><span class="line">        ]</span><br><span class="line">    &gt;&gt;&gt; buf = <span class="string">b'\x01\x01\x05\x0a\x37\xf8\x19\x70\x37\xf8\x29\x78'</span></span><br><span class="line">    &gt;&gt;&gt; opts = parse_opts(buf)</span><br><span class="line">    &gt;&gt;&gt; <span class="keyword">assert</span> opts == [</span><br><span class="line">        (TCP_OPT_NOP, <span class="string">b''</span>),</span><br><span class="line">        (TCP_OPT_NOP, <span class="string">b''</span>),</span><br><span class="line">        (TCP_OPT_SACK, <span class="string">b'\x37\xf8\x19\x70\x37\xf8\x29\x78'</span>)</span><br><span class="line">        ]</span><br><span class="line">    &gt;&gt;&gt; buf = <span class="string">b'\xff'</span></span><br><span class="line">    &gt;&gt;&gt; opts = parse_opts(buf)</span><br><span class="line">    &gt;&gt;&gt; <span class="keyword">assert</span> opts == [<span class="keyword">None</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 访问TCP偏移值</span></span><br><span class="line">    &gt;&gt;&gt; tcpheader = TCP(<span class="string">b'\x01\xbb\xc0\xd7\xb6\x56\xa8\xb9\xd1\xac\xaa\xb1\x50\x18\x40\x00\x56\xf8\x00\x00'</span>)</span><br><span class="line">    &gt;&gt;&gt; <span class="keyword">assert</span> tcpheader.off == <span class="number">5</span></span><br></pre></td></tr></table></figure>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/ToadYawn">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://www.linkedin.com/in/tingyu-hu">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://www.baidu.com">It helps SEO</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>
